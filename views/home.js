@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native'
 import styled from 'styled-components'
 import { NativeRouter, Route, Link } from "react-router-native"
+import { connect } from 'react-redux'
 
-export default class Home extends Component {
+class Home extends Component {
     render() {
+        console.log(this.props)
         return (
             <Container>
                 <Text>Home</Text>
@@ -47,3 +49,21 @@ const ToHours = styled(ToLink)`
 const ToGoals = styled(ToLink)`
     background: purple;
 `
+
+const mapStateToProps = (state) => {
+    return {
+      things: state.things
+    }
+  }
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      removeItem: (index) => {
+        dispatch({
+          type: 'REMOVE_ITEM',
+          index: index
+        })
+      }
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Home)

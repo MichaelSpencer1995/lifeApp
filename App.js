@@ -7,19 +7,26 @@ import Todo from './views/todo'
 import Budget from './views/budget'
 import Goals from './views/goals'
 import Hours from './views/hours'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers/rootReducer'
+
+const store = createStore(rootReducer)
 
 export default class App extends Component {
   render() {
     return (
-      <Container>
-        <NativeRouter>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/todo" component={Todo} />
-          <Route exact path="/budget" component={Budget} />
-          <Route exact path="/goals" component={Goals} />
-          <Route exact path="/hours" component={Hours} />
-        </NativeRouter>
-      </Container>
+      <Provider store={store}>
+        <Container>
+          <NativeRouter>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/todo" component={Todo} />
+            <Route exact path="/budget" component={Budget} />
+            <Route exact path="/goals" component={Goals} />
+            <Route exact path="/hours" component={Hours} />
+          </NativeRouter>
+          </Container>
+      </Provider>
     )
   }
 }
