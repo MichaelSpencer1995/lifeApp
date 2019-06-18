@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.9",
+    "react-router-native": "^5.0.1",
     "styled-components": "^4.3.1"
   },
   "devDependencies": {
